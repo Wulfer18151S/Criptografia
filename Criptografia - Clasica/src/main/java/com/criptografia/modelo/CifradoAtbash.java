@@ -16,7 +16,7 @@ public class CifradoAtbash implements EstrategiaCifrado {
         for (char c : texto.toCharArray()) {
             if (Character.isLetter(c)) {
                 char base = Character.isUpperCase(c) ? 'A' : 'a';
-                resultado.append((char) (base + ('Z' - base) - (c - base)));
+                resultado.append((char) (base + 25 - (c - base)));
             } else {
                 resultado.append(c);
             }

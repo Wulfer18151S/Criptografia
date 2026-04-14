@@ -2,8 +2,7 @@ package com.criptografia.modelo;
 
 public class CifradoPlayfair implements EstrategiaCifrado {
     
-    private static final char[][] MATRIZ = new char[5][5];
-    
+
     @Override
     public String cifrar(String texto, String clave) {
         char[][] matriz = construirMatriz(clave);
@@ -62,7 +61,8 @@ public class CifradoPlayfair implements EstrategiaCifrado {
         char[][] matriz = new char[5][5];
         boolean[] letrasUsadas = new boolean[26];
         
-        String claveLimpia = clave.toUpperCase().replaceAll("[^A-Z]", "");
+        String claveLimpia = (clave == null || clave.trim().isEmpty()) ? "CLAVE" : clave.toUpperCase().replaceAll("[^A-Z]", "");
+        if (claveLimpia.isEmpty()) claveLimpia = "CLAVE";
         claveLimpia = claveLimpia.replace("J", "I");
         
         StringBuilder builder = new StringBuilder();
