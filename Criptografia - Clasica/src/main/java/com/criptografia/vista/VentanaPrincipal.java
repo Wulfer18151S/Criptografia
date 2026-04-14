@@ -1,8 +1,11 @@
 package com.criptografia.vista;
 
-import main.java.com.criptografia.modelo.CifradoAtbash;
-import main.java.com.criptografia.modelo.CifradoCesar;
-import main.java.com.criptografia.modelo.EstrategiaCifrado;
+import com.criptografia.modelo.CifradoAtbash;
+import com.criptografia.modelo.CifradoCesar;
+import com.criptografia.modelo.CifradoPlayfair;
+import com.criptografia.modelo.CifradoRailFence;
+import com.criptografia.modelo.CifradoVigenere;
+import com.criptografia.modelo.EstrategiaCifrado;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,37 +17,38 @@ public class VentanaPrincipal extends JFrame {
     private JLabel lblDescripcion;
     private JTextArea txtOrigen;
     private JTextArea txtDestino;
+    private JPanel panelClave;
     private EstrategiaCifrado estrategiaActual;
 
     public VentanaPrincipal() {
         setTitle("Sistema de Cifrado Clásico");
-        setSize(800, 500);
+        setSize(900, 550);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(10, 10));
 
         inicializarComponentes();
-        estrategiaActual = new CifradoCesar(); // Estrategia por defecto
+        estrategiaActual = new CifradoCesar();
         actualizarDescripcion();
     }
 
     private void inicializarComponentes() {
-        // Panel Superior: Clave y Botones de Selección
         JPanel panelSuperior = new JPanel(new BorderLayout(5, 5));
 
-        JPanel panelClave = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panelClave.add(new JLabel("ESCRIBA SU PALABRA (CLAVE): "));
+        panelClave = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panelClave.add(new JLabel("CLAVE: "));
         txtClave = new JTextField(20);
         panelClave.add(txtClave);
 
         JPanel panelBotonesMetodo = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panelBotonesMetodo.add(new JLabel("ELIJA SU MÉTODO: "));
+        panelBotonesMetodo.add(new JLabel("MÉTODO: "));
 
-        // Cargar estrategias
         List<EstrategiaCifrado> metodos = List.of(
                 new CifradoCesar(),
-                new CifradoAtbash()
-                // Instanciar aquí: new CifradoVigenere(), new CifradoRailFence(), new CifradoPlayfair()
+                new CifradoAtbash(),
+                new CifradoVigenere(),
+                new CifradoRailFence(),
+                new CifradoPlayfair()
         );
 
         for (EstrategiaCifrado metodo : metodos) {
@@ -56,26 +60,26 @@ public class VentanaPrincipal extends JFrame {
             panelBotonesMetodo.add(btnMetodo);
         }
 
+        JButton btnLimpiar = new JButton("LIMPIAR");
+        btnLimpiar.addActionListener(e -> limpiarCampos());
+        panelBotonesMetodo.add(btnLimpiar);
+
         panelSuperior.add(panelClave, BorderLayout.NORTH);
         panelSuperior.add(panelBotonesMetodo, BorderLayout.CENTER);
 
-        // Descripción del Método
-        lblDescripcion = new JLabel("EXPLICACIÓN DE MÉTODO: ");
+        lblDescripcion = new JLabel();
         lblDescripcion.setBorder(BorderFactory.createEtchedBorder());
         panelSuperior.add(lblDescripcion, BorderLayout.SOUTH);
 
         add(panelSuperior, BorderLayout.NORTH);
 
-        // Panel Central: Áreas de Texto y Flechas de Acción
         JPanel panelCentral = new JPanel(new GridLayout(1, 3, 10, 10));
 
-        // Área Izquierda (Texto a cifrar)
         JPanel panelIzquierdo = new JPanel(new BorderLayout());
-        panelIzquierdo.add(new JLabel("TEXTO A CIFRAR"), BorderLayout.NORTH);
+        panelIzquierdo.add(new JLabel("TEXTO ORIGINAL"), BorderLayout.NORTH);
         txtOrigen = new JTextArea();
         panelIzquierdo.add(new JScrollPane(txtOrigen), BorderLayout.CENTER);
 
-        // Área Central (Botones de acción)
         JPanel panelAcciones = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
@@ -89,9 +93,8 @@ public class VentanaPrincipal extends JFrame {
         gbc.gridy = 1;
         panelAcciones.add(btnDescifrar, gbc);
 
-        // Área Derecha (Texto descifrado/cifrado)
         JPanel panelDerecho = new JPanel(new BorderLayout());
-        panelDerecho.add(new JLabel("TEXTO PROCESADO"), BorderLayout.NORTH);
+        panelDerecho.add(new JLabel("TEXTO CIFRADO"), BorderLayout.NORTH);
         txtDestino = new JTextArea();
         panelDerecho.add(new JScrollPane(txtDestino), BorderLayout.CENTER);
 
@@ -101,15 +104,20 @@ public class VentanaPrincipal extends JFrame {
 
         add(panelCentral, BorderLayout.CENTER);
 
-        // Listeners de Acción
         btnCifrar.addActionListener(e -> ejecutarCifrado(true));
         btnDescifrar.addActionListener(e -> ejecutarCifrado(false));
     }
 
     private void actualizarDescripcion() {
         if (estrategiaActual != null) {
-            lblDescripcion.setText(" EXPLICACIÓN DE MÉTODO: " + estrategiaActual.obtenerDescripcion());
+            lblDescripcion.setText(" " + estrategiaActual.obtenerDescripcion());
         }
+    }
+
+    private void limpiarCampos() {
+        txtOrigen.setText("");
+        txtDestino.setText("");
+        txtClave.setText("");
     }
 
     private void ejecutarCifrado(boolean esCifrado) {

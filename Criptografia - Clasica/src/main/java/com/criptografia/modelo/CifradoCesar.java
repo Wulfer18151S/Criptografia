@@ -1,4 +1,4 @@
-package main.java.com.criptografia.modelo;
+package com.criptografia.modelo;
 
 public class CifradoCesar implements EstrategiaCifrado{
     @Override
