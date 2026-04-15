@@ -1,8 +1,8 @@
-package com.criptografia;
+package main.java.com.criptografia;
 
 
 
-import com.criptografia.vista.VentanaPrincipal;
+import  main.java.com.criptografia.vista.VentanaPrincipal;
 import javax.swing.SwingUtilities;
 
 public class Main {

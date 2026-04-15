@@ -1,6 +1,6 @@
-package com.criptografia.modelo;
+package main.java.com.criptografia.modelo;
 
-public class CifradoVigenere implements com.criptografia.modelo.EstrategiaCifrado {
+public class CifradoVigenere implements EstrategiaCifrado {
     
     @Override
     public String cifrar(String texto, String clave) {

@@ -1,4 +1,4 @@
-package com.criptografia.modelo;
+package main.java.com.criptografia.modelo;
 
 public class CifradoPlayfair implements EstrategiaCifrado {
     

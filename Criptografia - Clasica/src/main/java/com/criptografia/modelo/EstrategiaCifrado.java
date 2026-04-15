@@ -1,4 +1,4 @@
-package com.criptografia.modelo;
+package main.java.com.criptografia.modelo;
 
 public interface EstrategiaCifrado {
     String cifrar(String texto, String clave);

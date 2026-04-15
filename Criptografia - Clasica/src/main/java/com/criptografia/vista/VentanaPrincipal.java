@@ -1,11 +1,11 @@
-package com.criptografia.vista;
+package main.java.com.criptografia.vista;
 
-import com.criptografia.modelo.CifradoAtbash;
-import com.criptografia.modelo.CifradoCesar;
-import com.criptografia.modelo.CifradoPlayfair;
-import com.criptografia.modelo.CifradoRailFence;
-import com.criptografia.modelo.CifradoVigenere;
-import com.criptografia.modelo.EstrategiaCifrado;
+import main.java.com.criptografia.modelo.CifradoAtbash;
+import main.java.com.criptografia.modelo.CifradoCesar;
+import main.java.com.criptografia.modelo.CifradoPlayfair;
+import main.java.com.criptografia.modelo.CifradoRailFence;
+import main.java.com.criptografia.modelo.CifradoVigenere;
+import main.java.com.criptografia.modelo.EstrategiaCifrado;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
