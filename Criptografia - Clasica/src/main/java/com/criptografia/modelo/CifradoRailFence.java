@@ -1,7 +1,8 @@
-package main.java.com.criptografia.modelo;
+package com.criptografia.modelo;
 
 public class CifradoRailFence implements EstrategiaCifrado {
-    
+    private String idioma = "ESPAÑOL";  // Campo para idioma
+     
     @Override
     public String cifrar(String texto, String clave) {
         int numRieles = obtenerNumeroRieles(clave);
@@ -54,18 +55,19 @@ public class CifradoRailFence implements EstrategiaCifrado {
         if (numRieles < 2 || texto == null || texto.isEmpty()) {
             return texto;
         }
-        
-        String textoSinEspacios = texto.replaceAll("\\s+", "");
-        if (textoSinEspacios.isEmpty()) {
+
+        String textoCifrado = texto.replaceAll("\\s+", "");
+        if (textoCifrado.isEmpty()) {
             return texto;
         }
-        
-        int longitud = textoSinEspacios.length();
+
+        int longitud = textoCifrado.length();
         int[] longitudPorRiel = new int[numRieles];
-        
+
+        // Paso 1: Calcular cuántos caracteres van en cada riel (simulando el zigzag)
         int rielActual = 0;
         boolean descendiendo = true;
-        
+
         for (int i = 0; i < longitud; i++) {
             longitudPorRiel[rielActual]++;
             if (numRieles > 1) {
@@ -84,21 +86,25 @@ public class CifradoRailFence implements EstrategiaCifrado {
                 }
             }
         }
-        
+
+        // Paso 2: Dividir el texto en chunks del tamaño de cada riel
         StringBuilder[] rieles = new StringBuilder[numRieles];
-        int[] indices = new int[numRieles];
-        
+        int[] posicionEnRiel = new int[numRieles];
+        int offset = 0;
+
         for (int i = 0; i < numRieles; i++) {
-            rieles[i] = new StringBuilder(textoSinEspacios.substring(0, longitudPorRiel[i]));
-            textoSinEspacios = textoSinEspacios.substring(longitudPorRiel[i]);
+            int tamChunk = longitudPorRiel[i];
+            rieles[i] = new StringBuilder(textoCifrado.substring(offset, offset + tamChunk));
+            offset += tamChunk;
         }
-        
+
+        // Paso 3: Reconstruir el zigzag leyendo alternando rieles
         StringBuilder resultado = new StringBuilder();
         rielActual = 0;
         descendiendo = true;
-        
+
         for (int i = 0; i < longitud; i++) {
-            resultado.append(rieles[rielActual].charAt(indices[rielActual]++));
+            resultado.append(rieles[rielActual].charAt(posicionEnRiel[rielActual]++));
             if (numRieles > 1) {
                 if (descendiendo) {
                     rielActual++;
@@ -115,7 +121,7 @@ public class CifradoRailFence implements EstrategiaCifrado {
                 }
             }
         }
-        
+
         return resultado.toString();
     }
 
@@ -136,5 +142,31 @@ public class CifradoRailFence implements EstrategiaCifrado {
     @Override
     public String obtenerNombre() {
         return "Rail Fence";
+    }
+
+    // Idiomas soportados (RailFence no usa alfabeto específico, pero mantiene la interfaz)
+    @Override
+    public String getIdioma() {
+        return "ESPAÑOL";  // Default
+    }
+
+    // Setter para idioma - maneja acentos correctamente
+    @Override
+    public void setIdioma(String idioma) {
+        if (idioma != null && !idioma.isEmpty()) {
+            String normalizado = idioma.toUpperCase()
+                .replace('Á', 'A').replace('É', 'E').replace('Í', 'I')
+                .replace('Ó', 'O').replace('Ú', 'U').replace('Ñ', 'N');
+            
+            if (normalizado.equals("INGLES") || normalizado.startsWith("ES")) {
+                this.idioma = normalizado.startsWith("ING") ? "INGLES" :
+                             normalizado.contains("EXT") ? "ESPANOL_EXTENDIDO" : "ESPAÑOL";
+            }
+        }
+    }
+
+    @Override
+    public String getAlfabetoDesc() {
+        return "N/A";
     }
 }
