@@ -2,11 +2,11 @@
 
 > Aplicación de escritorio para aprender y experimentar con los métodos de cifrado clásicos más importantes de la historia de la criptografía.
 
-[![Java](https://img.shields.io/badge/Java-17-blue?style=flat-square&logo=java)](https://www.java.com/)
-[![Swing](https://img.shields.io/badge/Swing-GUI-green?style=flat-square)](https://docs.oracle.com/javase/tutorial/uiswing/)
-[![Licencia](https://img.shields.io/badge/Licencia-MIT-yellow?style=flat-square)](LICENSE)
+[](https://www.java.com/)
+[](https://docs.oracle.com/javase/tutorial/uiswing/)
+[](https://www.google.com/search?q=LICENSE)
 
----
+-----
 
 ## Descripción
 
@@ -14,19 +14,19 @@
 
 La aplicación cuenta con una interfaz gráfica moderna, intuitiva y bilingüe (español/inglés), que permite cifrar y descifrar texto utilizando cinco métodos diferentes de cifrado clásico.
 
----
+-----
 
 ## Características
 
-- **5 Métodos de Cifrado Clásicos**: César, Atbash, Vigenère, Rail Fence y Playfair
-- **Interfaz Gráfica Moderna**: Diseño limpio y profesional con Java Swing
-- **Soporte Bilingüe**: Completamente funcional en Español e Inglés
-- **Cifrar y Descifrar**:双向操作 para ambos procesos
-- **Textos largos**: Admite entradas de cualquier longitud con ajuste automático de tamaño de fuente
-- **Mantenimiento**: Botón para limpiar campos rápidamente
-- **Validación de clave**: Verifica el tipo de clave requerido por cada método
+  - **5 Métodos de Cifrado Clásicos**: César, Atbash, Vigenère, Rail Fence y Playfair.
+  - **Interfaz Gráfica Moderna**: Diseño limpio y profesional con Java Swing.
+  - **Soporte Bilingüe**: Completamente funcional en Español e Inglés.
+  - **Operación Bidireccional**: Soporta tanto el proceso de cifrado como el de descifrado.
+  - **Textos largos**: Admite entradas de cualquier longitud con ajuste automático de tamaño de fuente.
+  - **Mantenimiento**: Botón para limpiar campos rápidamente.
+  - **Validación de clave**: Verifica el tipo de clave requerido por cada método.
 
----
+-----
 
 ## Capturas de Interfaz
 
@@ -34,17 +34,18 @@ La aplicación presenta una interfaz dividida en tres paneles principales:
 
 | Panel | Descripción |
 |-------|-------------|
-| **Panel Superior** | Campo de clave, selector de idioma, botones de método y descripción dinámica |
-| **Panel Izquierdo** | Área de entrada de texto (texto claro o cifrado según operación) |
-| **Panel Derecho** | Área de salida con el resultado (texto cifrado o descifrado) |
+| **Panel Superior** | Campo de clave, selector de idioma, botones de método y descripción dinámica. |
+| **Panel Izquierdo** | Área de entrada de texto (texto claro o cifrado según operación). |
+| **Panel Derecho** | Área de salida con el resultado (texto cifrado o descifrado). |
 
 **Elementos destacados**:
-- Botones toggle para seleccionar el método de cifrado
-- Etiqueta dinámico que muestra la descripción del método seleccionado
-- Indicador visual del tipo de clave requerida
-- Botones grandes para CIFRAR y DESCIFRAR con estilo profesional
 
----
+  - Botones *toggle* para seleccionar el método de cifrado.
+  - Etiqueta dinámica que muestra la descripción del método seleccionado.
+  - Indicador visual del tipo de clave requerida.
+  - Botones de acción rápida para CIFRAR y DESCIFRAR con estilo profesional.
+
+-----
 
 ## Requisitos
 
@@ -59,10 +60,10 @@ La aplicación presenta una interfaz dividida en tres paneles principales:
 
 ### Dependencias
 
-- **Java Swing** (incluido en JDK desde Java 1.2)
-- No se requieren librerías externas adicionales
+  - **Java Swing** (incluido en el JDK).
+  - No se requieren librerías externas adicionales.
 
----
+-----
 
 ## Instalación
 
@@ -82,9 +83,9 @@ java -cp out com.criptografia.Main
 
 ### Opción 2: Usar IntelliJ IDEA
 
-1. Abrir el proyecto en IntelliJ IDEA
-2. Seleccionar el SDK de Java 17+
-3. Ejecutar la clase `Main`
+1.  Abrir el proyecto en IntelliJ IDEA.
+2.  Seleccionar el SDK de Java 17+.
+3.  Ejecutar la clase `Main`.
 
 ### Opción 3: Ejecutable JAR (si está disponible)
 
@@ -92,118 +93,40 @@ java -cp out com.criptografia.Main
 java -jar Criptografia-Clasica.jar
 ```
 
----
+-----
 
 ## Cómo Usar
 
-### Paso 1: Ejecutar la Aplicación
+1.  **Seleccionar el Método**: Haz clic en uno de los botones (César, Atbash, Vigenère, Rail Fence o Playfair).
+2.  **Configurar la Clave**: Ingresa el valor correspondiente (número o palabra según el método).
+3.  **Ingresar el Texto**: Escribe en el panel de **ENTRADA**.
+4.  **Procesar**: Presiona **CIFRAR** o **DESCIFRAR** para obtener el resultado en el panel de **SALIDA**.
 
-Después de instalar, ejecute la aplicación:
-```bash
-java -cp out com.criptografia.Main
-```
-
-### Paso 2: Seleccionar el Método de Cifrado
-
-Haga clic en uno de los botones de método en el panel superior:
-- **César** - Cifrado por desplazamiento
-- **Atbash** - Inversión del alfabeto
-- **Vigenère** - Cifrado polialfabético
-- **Rail Fence** - Transposición en rieles
-- **Playfair** - Matriz 5x5
-
-### Paso 3: Configurar la Clave
-
-Ingrese la clave según el método seleccionado:
-
-| Método | Tipo de Clave | Ejemplo |
-|--------|--------------|--------|
-| César | Número entero (1-25) | `3` |
-| Atbash | No requiere clave | - |
-| Vigenère | Palabra o texto | `CLAVE` |
-| Rail Fence | Número de rieles (2-10) | `3` |
-| Playfair | Palabra sin espacios | `CLAVE` |
-
-### Paso 4: Ingresar el Texto
-
-Escriba el texto a cifrar o descifrar en el panel de **ENTRADA** (panel izquierdo).
-
-### Paso 5: Cifrar o Descifrar
-
-- **CIFRAR** - Para cifrar el texto de entrada
-- **DESCIFRAR** - Para descifrar el texto de entrada
-
-### Paso 6: Copiar el Resultado
-
-El resultado aparecerá en el panel de **SALIDA** (panel derecho). puede copiarlo manualmente.
-
----
+-----
 
 ## Métodos de Cifrado Explicados
 
-### 1. Cifrado César
+### 1\. Cifrado César
 
-El cifrado César es uno de los métodos más antiguos y simples. Consiste en desplazar cada letra un número fijo de posiciones en el alfabeto.
+Desplazamiento de cada letra un número fijo de posiciones en el alfabeto.
 
-**Ejemplo** (desplazamiento = 3):
-```
-Texto original: HOLA
-Texto cifrado: KROD
-```
+### 2\. Cifrado Atbash
 
-**Detalle**:
-- A → D, B → E, C → F, ... X → A, Y → B, Z → C
+Sustitución que invierte el alfabeto (A ↔ Z, B ↔ Y).
 
-### 2. Cifrado Atbash
+### 3\. Cifrado Vigenère
 
-El cifrado Atbash es un método de sustitución que invierte el orden del alfabeto. La primera letra se sustituye por la última, la segunda por la penúltima, etc.
+Método polialfabético que usa una palabra clave para variar el desplazamiento.
 
-**Ejemplo**:
-```
-Texto original: HOLA
-Texto cifrado: TLOZ
-```
+### 4\. Cifrado Rail Fence
 
-**Detalle**:
-- A ↔ Z, B ↔ Y, C ↔ X, ... M ↔ N, N ↔ M
+Transposición que escribe el texto en zigzag a través de "rieles" imaginarios.
 
-### 3. Cifrado Vigenère
+### 5\. Cifrado Playfair
 
-El cifrado Vigenère es un método polialfabético que utiliza una palabra clave para determinar el desplazamiento de cada letra. Es considerado uno de los cifrados más seguros de la era clásica.
+Sustitución digrámica basada en una matriz de 5x5.
 
-**Ejemplo** (clave = "CLAVE"):
-```
-Texto original: HOLA
-Texto cifrado: JVRF
-```
-
-**Detalle**: Cada letra se desplaza según la letra correspondientes de la clave.
-
-### 4. Cifrado Rail Fence
-
-El cifrado Rail Fence es un método de transposición que escribe el texto en rieles (filas) y lo lee diagonalmente.
-
-**Ejemplo** (3 rieles):
-```
-Texto original: HOLA MUNDO
-Texto cifrado: HOUDLNLA MU
-```
-
-**Detalle**: El texto se escribe en zigzag a través de múltiples rieles.
-
-### 5. Cifrado Playfair
-
-El cifrado Playfair es un método de sustitución digrámica que utiliza una matriz 5x5 para substituir pares de letras.
-
-**Ejemplo** (clave = "PLAYFAIR"):
-```
-Texto original: HOLA
-Texto cifrado: RKPS
-```
-
-**Detalle**: Usa una matriz de 5x5 construida con la clave.
-
----
+-----
 
 ## Estructura del Proyecto
 
@@ -214,52 +137,27 @@ Criptografia-Clasica/
 │       └── java/
 │           └── com/
 │               └── criptografia/
-│                   ├── Main.java                    # Punto de entrada
-│                   ├── modelo/
-│                   │   ├── EstrategiaCifrado.java  # Interfaz de cifrado
-│                   │   ├── Alfabeto.java          # Gestión del alfabeto
-│                   │   ├── CifradoCesar.java      # Cifrado César
-│                   │   ├── CifradoAtbash.java      # Cifrado Atbash
-│                   │   ├── CifradoVigenere.java   # Cifrado Vigenère
-│                   │   ├── CifradoRailFence.java # Cifrado Rail Fence
-│                   │   └── CifradoPlayfair.java   # Cifrado Playfair
-│                   └── vista/
-│                       └── VentanaPrincipal.java     # Interfaz gráfica
-├── .idea/                                  # Configuración IntelliJ
-├── Criptografia-Clasica.iml                # Archivo de proyecto
-��── README.md                               # Este archivo
+│                   ├── Main.java                # Punto de entrada
+│                   ├── modelo/                  # Lógica de negocio
+│                   │   ├── EstrategiaCifrado.java
+│                   │   ├── Alfabeto.java
+│                   │   ├── CifradoCesar.java
+│                   │   ├── CifradoAtbash.java
+│                   │   ├── CifradoVigenere.java
+│                   │   ├── CifradoRailFence.java
+│                   │   └── CifradoPlayfair.java
+│                   └── vista/                   # Interfaz de usuario
+│                       └── VentanaPrincipal.java
+├── README.md
+└── LICENSE
 ```
 
----
-
-## Contribuidores
-
-| Rol | Nombre | Contacto |
-|-----|--------|---------|
-| Desarrollador Principal | [Tu Nombre] | tu@email.com |
-| Tutor/Asesor | [Nombre del Tutor] | tutor@email.com |
-
----
+-----
 
 ## Licencia
 
-Este proyecto está bajo la licencia **MIT**. See [LICENSE](LICENSE) para más detalles.
+Este proyecto está bajo la licencia **MIT**. Consulta el archivo [LICENSE](https://www.google.com/search?q=LICENSE) para más detalles.
 
----
+-----
 
-## Recursos Adicionales
-
-- [Historia de la Criptografía](https://es.wikipedia.org/wiki/Criptograf%C3%ADa)
-- [Cifrado César - Wikipedia](https://es.wikipedia.org/wiki/Cifrado_C%C3%A9sar)
-- [Cifrado Vigenère - Wikipedia](https://es.wikipedia.org/wiki/Cifrado_Vigen%C3%A8re)
-- [Tutorial Java Swing](https://docs.oracle.com/javase/tutorial/uiswing/)
-
----
-
-## Agradecimientos
-
-Agradecimientos a todos los estudiantes y profesores que han contribuido a mejorar este proyecto.
-
----
-
-*Made with ❤️ for education in cryptography*
+*Hecho con ❤️ para la educación en criptografía*
